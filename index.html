@@ -1,0 +1,1714 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOMBMEDIA PRODUCTION - Servicios Multimedia Profesionales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #e40000; /* Rojo similar a Ferrari */
+            --secondary-color: #000000;
+            --accent-color: #f8f8f8;
+            --text-color: #333;
+            --light-text: #fff;
+            --font-size-base: 1.1rem; /* Tamaño base más grande */
+            --font-size-large: 1.3rem;
+            --font-size-xlarge: 1.6rem;
+            --font-size-xxlarge: 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+            background-color: #f5f5f5;
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+        }
+        
+        /* Estilos del header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 20px 0; /* Más padding */
+            transition: all 0.3s ease;
+        }
+        
+        .header-scroll {
+            background-color: rgba(0, 0, 0, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px; /* Más ancho */
+            margin: 0 auto;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: var(--light-text);
+            font-size: 32px; /* Más grande */
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 35px; /* Más espacio */
+        }
+        
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px; /* Más grande */
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px; /* Más grueso */
+            background: var(--primary-color);
+            bottom: -8px; /* Más abajo */
+            left: 0;
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 28px; /* Más grande */
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 800px; /* Altura mínima */
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            max-width: 700px; /* Más ancho */
+            color: var(--light-text);
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo para mejor legibilidad */
+            border-radius: 15px;
+        }
+        
+        .hero h1 {
+            font-size: 72px; /* Mucho más grande */
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
+        
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+        
+        .hero p {
+            font-size: 22px; /* Más grande */
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 16px 40px; /* Más grande */
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 18px; /* Más grande */
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            margin-left: 20px; /* Más espacio */
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+        
+        /* Servicios Section */
+        .section {
+            padding: 120px 0; /* Más padding */
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px; /* Más espacio */
+        }
+        
+        .section-title h2 {
+            font-size: 48px; /* Más grande */
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-title p {
+            font-size: 20px; /* Más grande */
+            color: #777;
+            max-width: 800px; /* Más ancho */
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Tarjetas más grandes */
+            gap: 40px; /* Más espacio */
+        }
+        
+        .service-card {
+            background-color: #fff;
+            border-radius: 15px; /* Bordes más redondeados */
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); /* Sombra más pronunciada */
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-15px); /* Más movimiento */
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-img {
+            height: 250px; /* Más alto */
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.15); /* Más zoom */
+        }
+        
+        .service-content {
+            padding: 30px; /* Más padding */
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-content h3 {
+            font-size: 26px; /* Más grande */
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .service-content p {
+            color: #777;
+            margin-bottom: 30px; /* Más espacio */
+            line-height: 1.6;
+            font-size: 18px; /* Más grande */
+            flex-grow: 1;
+        }
+        
+        /* Audio Player Styles */
+        .audio-player {
+            width: 100%;
+            margin-bottom: 20px;
+            background: #f5f5f5;
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .play-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 6px;
+            background: #ddd;
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 3px;
+            width: 0%;
+        }
+        
+        .time-display {
+            font-size: 14px;
+            color: #777;
+            min-width: 80px;
+            text-align: right;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: #f9f9f9;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 80px;
+            color: rgba(228, 0, 0, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: #777;
+            font-size: 16px;
+        }
+        
+        /* Music Shop Section */
+        .music-shop {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+        }
+        
+        .music-shop .section-title h2 {
+            color: var(--light-text);
+        }
+        
+        .music-shop .section-title p {
+            color: #aaa;
+        }
+        
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Más grandes */
+            gap: 30px;
+        }
+        
+        .track-card {
+            background-color: #222;
+            border-radius: 12px; /* Más redondeado */
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .track-card:hover {
+            transform: translateY(-10px); /* Más movimiento */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+        
+        .track-img {
+            height: 220px; /* Más alto */
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .track-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .track-card:hover .track-img img {
+            transform: scale(1.1);
+        }
+        
+        .track-info {
+            padding: 25px; /* Más padding */
+        }
+        
+        .track-info h3 {
+            font-size: 22px; /* Más grande */
+            margin-bottom: 15px;
+        }
+        
+        .track-info p {
+            color: #aaa;
+            margin-bottom: 20px; /* Más espacio */
+            font-size: 16px; /* Más grande */
+        }
+        
+        .track-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 24px; /* Más grande */
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .buy-btn {
+            padding: 12px 25px; /* Más grande */
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border: none;
+            border-radius: 25px; /* Más redondeado */
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px; /* Más grande */
+        }
+        
+        .buy-btn:hover {
+            background-color: #c10000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .sold-out {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+        
+        /* Work With Us Section */
+        .work-with-us {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('work-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--light-text);
+            text-align: center;
+            padding: 150px 0; /* Más padding */
+        }
+        
+        .work-with-us h2 {
+            font-size: 48px; /* Más grande */
+            margin-bottom: 30px;
+            letter-spacing: -0.5px;
+        }
+        
+        .work-with-us p {
+            font-size: 22px; /* Más grande */
+            max-width: 800px; /* Más ancho */
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: #fff;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Más grandes */
+            gap: 60px; /* Más espacio */
+        }
+        
+        .contact-info h3 {
+            font-size: 28px; /* Más grande */
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
+        }
+        
+        .contact-info p {
+            margin-bottom: 40px; /* Más espacio */
+            line-height: 1.6;
+            font-size: 18px; /* Más grande */
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px; /* Más espacio */
+        }
+        
+        .contact-icon {
+            width: 60px; /* Más grande */
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px; /* Más grande */
+            margin-right: 20px; /* Más espacio */
+        }
+        
+        .contact-text h4 {
+            font-size: 20px; /* Más grande */
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p {
+            margin: 0;
+            color: #777;
+            font-size: 18px; /* Más grande */
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 25px; /* Más espacio */
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 16px 20px; /* Más grande */
+            border: 1px solid #ddd;
+            border-radius: 8px; /* Más redondeado */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px; /* Más grande */
+            transition: all 0.3s ease;
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(228, 0, 0, 0.1);
+        }
+        
+        .contact-form textarea {
+            height: 180px; /* Más alto */
+            resize: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 70px 0 30px; /* Más padding */
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Más grandes */
+            gap: 40px; /* Más espacio */
+            margin-bottom: 50px; /* Más espacio */
+        }
+        
+        .footer-col h3 {
+            font-size: 24px; /* Más grande */
+            margin-bottom: 25px;
+            position: relative;
+            letter-spacing: -0.5px;
+        }
+        
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -12px; /* Más abajo */
+            width: 50px;
+            height: 3px; /* Más grueso */
+            background-color: var(--primary-color);
+        }
+        
+        .footer-col p {
+            margin-bottom: 20px; /* Más espacio */
+            line-height: 1.6;
+            color: #aaa;
+            font-size: 16px; /* Más grande */
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px; /* Más espacio */
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 16px; /* Más grande */
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 50px; /* Más grande */
+            height: 50px;
+            background-color: #333;
+            color: var(--light-text);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px; /* Más grande */
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-5px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px; /* Más espacio */
+            border-top: 1px solid #333;
+            color: #aaa;
+            font-size: 16px; /* Más grande */
+        }
+        
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 40px; /* Más arriba */
+            right: 40px;
+            width: 70px; /* Más grande */
+            height: 70px;
+            background-color: #25D366;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 36px; /* Más grande */
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: scale(1.15); /* Más grande al hover */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            animation: none;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from { transform: translateX(-50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideInRight {
+            from { transform: translateX(50px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .animate-fade {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .animate-left {
+            animation: slideInLeft 1s ease forwards;
+        }
+        
+        .animate-right {
+            animation: slideInRight 1s ease forwards;
+        }
+        
+        /* Video Play Button */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 4;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            font-size: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-play-btn:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background-color: #c10000;
+        }
+        
+        /* Stats Section */
+        .stats {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+        
+        .stat-item {
+            padding: 30px;
+        }
+        
+        .stat-number {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 20px;
+            opacity: 0.9;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 60px;
+            }
+            
+            .section-title h2 {
+                font-size: 42px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 50px;
+            }
+            
+            .hero p {
+                font-size: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 38px;
+            }
+            
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 90px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background-color: rgba(0, 0, 0, 0.95);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.5s ease;
+                z-index: 999;
+            }
+            
+            nav.active {
+                left: 0;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li {
+                margin: 20px 0;
+            }
+            
+            .hero h1 {
+                font-size: 42px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn-container {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 20px;
+            }
+            
+            .section {
+                padding: 90px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .work-with-us h2 {
+                font-size: 36px;
+            }
+            
+            .work-with-us p {
+                font-size: 18px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero-content {
+                padding: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-number {
+                font-size: 48px;
+            }
+            
+            .stat-label {
+                font-size: 18px;
+            }
+            
+            .whatsapp-btn {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
+                bottom: 30px;
+                right: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/573238051516" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">BOOM<span>BMEDIA</span></a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#audio">Servicios de Audio</a></li>
+                    <li><a href="#multimedia">Multimedia</a></li>
+                    <li><a href="#music-shop">Tienda de Música</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="video-container">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="mediaboommp4.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content animate-left">
+                <h1>PRODUCCIÓN <span>MULTIMEDIA</span> PROFESIONAL</h1>
+                <p>Brindamos servicios de audio, video y multimedia de alta calidad para llevar tus proyectos al siguiente nivel. Soluciones creativas y técnicas para empresas y artistas.</p>
+                <div class="btn-container">
+                    <a href="#audio" class="btn">Nuestros Servicios</a>
+                    <a href="#contact" class="btn btn-outline">Contáctanos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Stats Section -->
+    <section class="section stats">
+        <div class="container stats-container">
+            <div class="stat-item animate-fade">
+                <div class="stat-number" data-count="150">0</div>
+                <div class="stat-label">Proyectos Completados</div>
+            </div>
+            <div class="stat-item animate-fade">
+                <div class="stat-number" data-count="50">0</div>
+                <div class="stat-label">Clientes Satisfechos</div>
+            </div>
+            <div class="stat-item animate-fade">
+                <div class="stat-number" data-count="10">0</div>
+                <div class="stat-label">Años de Experiencia</div>
+            </div>
+            <div class="stat-item animate-fade">
+                <div class="stat-number" data-count="100">0</div>
+                <div class="stat-label">Pistas Musicales</div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Audio Services Section -->
+    <section class="section" id="audio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios de Audio</h2>
+                <p>Ofrecemos servicios profesionales de audio para producciones musicales, comerciales y más.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="produccion.jpg" alt="Producción musical">
+                    </div>
+                    <div class="service-content">
+                        <h3>Producción Musical</h3>
+                        <p>Creación y producción de piezas musicales profesionales para artistas y proyectos comerciales.</p>
+                        <div class="audio-player">
+                            <button class="play-btn" data-audio="audio-sample-1.mp3">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time-display">0:00 / 0:00</div>
+                        </div>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Producción%20Musical" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="audio.jpg" alt="Trabajos de audio">
+                    </div>
+                    <div class="service-content">
+                        <h3>Trabajos de Audio</h3>
+                        <p>Edición, mezcla y masterización de audio para cualquier tipo de proyecto sonoro.</p>
+                        <div class="audio-player">
+                            <button class="play-btn" data-audio="audio-sample-2.mp3">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time-display">0:00 / 0:00</div>
+                        </div>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Trabajos%20de%20Audio" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="pizador.jpg" alt="Masterización">
+                    </div>
+                    <div class="service-content">
+                        <h3>Voice Tag</h3>
+                        <p>Pizadores para dj</p>
+                        <div class="audio-player">
+                            <button class="play-btn" data-audio="audio-sample-3.mp3">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time-display">0:00 / 0:00</div>
+                        </div>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Masterización" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Multimedia Services Section -->
+    <section class="section" id="multimedia">
+        <div class="container">
+            <div class="section-title">
+                <h2>Servicios Multimedia</h2>
+                <p>Soluciones creativas y técnicas para tus proyectos visuales y digitales.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Servicio 1 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="3d4.jpg" alt="Modelado 3D">
+                    </div>
+                    <div class="service-content">
+                        <h3>Modelado 3D</h3>
+                        <p>Creación de modelos tridimensionales para animación, videojuegos o visualización arquitectónica.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Modelado%203D" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 2 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="3d.jpg" alt="Animación">
+                    </div>
+                    <div class="service-content">
+                        <h3>Animación</h3>
+                        <p>Producción de animaciones 2D y 3D para publicidad, entretenimiento y educación.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Animación" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 3 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="diseño grafico.jpg" alt="Diseño Gráfico">
+                    </div>
+                    <div class="service-content">
+                        <h3>Diseño Gráfico</h3>
+                        <p>Creación de identidad visual, material publicitario y diseño para medios impresos y digitales.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Diseño%20Gráfico" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                
+                <!-- Servicio 4 -->
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="Fotografia.jpg" alt="Fotografía Profesional">
+                    </div>
+                    <div class="service-content">
+                        <h3>Fotografía Profesional</h3>
+                        <p>Sesiones fotográficas profesionales para productos, eventos, retratos y más.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Fotografía%20Profesional" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                <!-- Servicio 5 -->
+
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="pagina web.jpg" alt="Fotografía Profesional">
+                    </div>
+                    <div class="service-content">
+                        <h3>Paginas Web</h3>
+                        <p>Impulsa tu negocio al siguiente nivel con nuestras páginas web modernas y funcionales.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Fotografía%20Profesional" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+            
+            <!-- Servicio 6 -->
+
+                <div class="service-card animate-fade">
+                    <div class="service-img">
+                        <img src="video.jpg" alt="Fotografía Profesional">
+                    </div>
+                    <div class="service-content">
+                        <h3>Diseño Audiovisual</h3>
+                        <p>Transforma tus ideas en imágenes y videos que cautivan y comunican.</p>
+                        <a href="https://wa.me/573238051516?text=Estoy%20interesado%20en%20el%20servicio%20de%20Fotografía%20Profesional" class="btn" target="_blank">Solicitar Servicio</a>
+                    </div>
+                </div>
+                </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <p>Testimonios de clientes satisfechos con nuestros servicios profesionales.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonio 1 -->
+                <div class="testimonial-card animate-fade">
+                    <div class="testimonial-content">
+                        <p>BOOMBMEDIA transformó completamente nuestra identidad de marca. Su trabajo en diseño y producción audiovisual superó todas nuestras expectativas. ¡Altamente recomendados!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="juan.jpg" alt="Juan Pérez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Juan Pérez</h4>
+                            <p>CEO, Empresa Creativa</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonio 2 -->
+                <div class="testimonial-card animate-fade">
+                    <div class="testimonial-content">
+                        <p>La producción musical que hicieron para nuestro último comercial fue increíble. Capturaron exactamente el tono y la emoción que buscábamos. Trabajar con ellos fue una experiencia excelente.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="nena.jpg" alt="María Gómez">
+                        </div>
+                        <div class="author-info">
+                            <h4>María Gómez</h4>
+                            <p>Directora de Marketing</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonio 3 -->
+                <div class="testimonial-card animate-fade">
+                    <div class="testimonial-content">
+                        <p>Como artista independiente, encontré en BOOMBMEDIA el partner perfecto para mis producciones. Su atención al detalle y calidad profesional son incomparables en el mercado.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="carlos.jpg" alt="Carlos Rodríguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Artista Musical</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Music Shop Section -->
+    <section class="section music-shop" id="music-shop">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tienda de Música</h2>
+                <p>Adquiere pistas musicales exclusivas para tus proyectos. Una vez compradas, ya no estarán disponibles para otros clientes.</p>
+            </div>
+            
+            <div class="tracks-grid" id="tracksGrid">
+                <!-- Las pistas se cargarán dinámicamente con JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <!-- Work With Us Section -->
+    <section class="section work-with-us">
+        <div class="container">
+            <h2 class="animate-fade">¿Quieres trabajar con nosotros?</h2>
+            <p class="animate-fade">Únete a nuestro equipo de creativos y técnicos apasionados por la producción multimedia.</p>
+            <a href="#contact" class="btn animate-fade">Envíanos tu información</a>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>Contáctanos para más información sobre nuestros servicios o para solicitar un presupuesto.</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info animate-left">
+                    <h3>BOOMBMEDIA PRODUCTION</h3>
+                    <p>Brindamos servicios multimedia de toda clase, incluyendo páginas web y aplicaciones móviles. Contáctanos para llevar tus proyectos al siguiente nivel.</p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Teléfono</h4>
+                            <p>323 805 1516</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>Bombmedia@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contact-form animate-right">
+                    <form id="workForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Nombre Completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Correo Electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Teléfono">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Cuéntanos sobre tu experiencia y por qué quieres trabajar con nosotros" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>BOOMBMEDIA</h3>
+                    <p>Producción multimedia profesional para empresas y artistas. Soluciones creativas y técnicas de alta calidad.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#audio">Producción de Audio</a></li>
+                        <li><a href="#multimedia">Diseño Multimedia</a></li>
+                        <li><a href="#music-shop">Tienda de Música</a></li>
+                        <li><a href="#">Desarrollo Web</a></li>
+                        <li><a href="#">Aplicaciones Móviles</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#audio">Servicios</a></li>
+                        <li><a href="#music-shop">Tienda</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Suscríbete para recibir noticias y promociones exclusivas.</p>
+                    <form id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" placeholder="Tu correo electrónico" required>
+                        </div>
+                        <button type="submit" class="btn">Suscribirse</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 BOOMBMEDIA PRODUCTION. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scroll');
+            } else {
+                header.classList.remove('header-scroll');
+            }
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (nav.classList.contains('active')) {
+                    nav.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Music Shop Functionality
+        const tracksGrid = document.getElementById('tracksGrid');
+        
+        // Sample tracks data - in a real app, this would come from a database
+        const tracks = [
+            { 
+                id: 1, 
+                title: "Pista Épica", 
+                description: "Música de fondo para videos dramáticos", 
+                price: "$49.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "NO TE HHAGA.wav",
+                sold: false 
+            },
+            { 
+                id: 2, 
+                title: "Ritmo Urbano", 
+                description: "Beat moderno para proyectos urbanos", 
+                price: "$39.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-2.mp3",
+                sold: false 
+            },
+            { 
+                id: 3, 
+                title: "Ambiente Relajante", 
+                description: "Música ambiental para videos corporativos", 
+                price: "$29.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-3.mp3",
+                sold: true 
+            },
+            { 
+                id: 4, 
+                title: "Energía Electrónica", 
+                description: "Pista electrónica para proyectos dinámicos", 
+                price: "$59.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-4.mp3",
+                sold: false 
+            },
+            { 
+                id: 5, 
+                title: "Melodía Acústica", 
+                description: "Composición acústica para contenido emotivo", 
+                price: "$34.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-5.mp3",
+                sold: false 
+            },
+            { 
+                id: 6, 
+                title: "Groove Funky", 
+                description: "Ritmo funky para proyectos con estilo", 
+                price: "$44.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-6.mp3",
+                sold: false 
+            },
+
+            { 
+                id: 7, 
+                title: "Groove Funky", 
+                description: "Ritmo funky para proyectos con estilo", 
+                price: "$44.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-6.mp3",
+                sold: false 
+            },
+            { 
+                id: 8, 
+                title: "Groove Funky", 
+                description: "Ritmo funky para proyectos con estilo", 
+                price: "$44.99", 
+                image: "pexels-mindaugas-lazdauskas-2154678394-33363750.jpg", 
+                audio: "track-6.mp3",
+                sold: false 
+            },
+            
+        ];
+        
+        // Audio player functionality
+        let currentAudio = null;
+        let currentAudioElement = null;
+        
+        function setupAudioPlayer(audioElement, playBtn, progressBar, timeDisplay, audioSrc) {
+            const audio = new Audio(audioSrc);
+            
+            playBtn.addEventListener('click', function() {
+                if (currentAudio && currentAudio !== audio) {
+                    // Pause any other playing audio
+                    currentAudio.pause();
+                    const otherPlayBtn = document.querySelector(`.play-btn[data-audio="${currentAudio.src.split('/').pop()}"]`);
+                    if (otherPlayBtn) {
+                        otherPlayBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    }
+                }
+                
+                if (audio.paused) {
+                    audio.play();
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    currentAudio = audio;
+                    currentAudioElement = audioElement;
+                } else {
+                    audio.pause();
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                }
+            });
+            
+            audio.addEventListener('timeupdate', function() {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = progress + '%';
+                
+                // Update time display
+                const currentMinutes = Math.floor(audio.currentTime / 60);
+                const currentSeconds = Math.floor(audio.currentTime % 60).toString().padStart(2, '0');
+                const durationMinutes = Math.floor(audio.duration / 60);
+                const durationSeconds = Math.floor(audio.duration % 60).toString().padStart(2, '0');
+                
+                timeDisplay.textContent = `${currentMinutes}:${currentSeconds} / ${durationMinutes}:${durationSeconds}`;
+            });
+            
+            audio.addEventListener('ended', function() {
+                playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                progressBar.style.width = '0%';
+                timeDisplay.textContent = '0:00 / 0:00';
+            });
+            
+            // Click on progress bar to seek
+            progressBar.parentElement.addEventListener('click', function(e) {
+                const percent = e.offsetX / this.offsetWidth;
+                audio.currentTime = percent * audio.duration;
+            });
+        }
+        
+        // Render tracks
+        function renderTracks() {
+            tracksGrid.innerHTML = '';
+            
+            tracks.forEach(track => {
+                const trackCard = document.createElement('div');
+                trackCard.className = 'track-card animate-fade';
+                
+                trackCard.innerHTML = `
+                    <div class="track-img">
+                        <img src="${track.image}" alt="${track.title}">
+                    </div>
+                    <div class="track-info">
+                        <h3>${track.title}</h3>
+                        <p>${track.description}</p>
+                        <div class="audio-player">
+                            <button class="play-btn" data-audio="${track.audio}">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <div class="progress-container">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time-display">0:00 / 0:00</div>
+                        </div>
+                        <div class="track-price">
+                            <span class="price">${track.price}</span>
+                            <button class="buy-btn ${track.sold ? 'sold-out' : ''}" 
+                                    data-id="${track.id}" 
+                                    ${track.sold ? 'disabled' : ''}>
+                                ${track.sold ? 'Agotado' : 'Comprar'}
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                tracksGrid.appendChild(trackCard);
+                
+                // Set up audio player for this track
+                const audioElement = trackCard.querySelector('.audio-player');
+                const playBtn = trackCard.querySelector('.play-btn');
+                const progressBar = trackCard.querySelector('.progress');
+                const timeDisplay = trackCard.querySelector('.time-display');
+                
+                setupAudioPlayer(audioElement, playBtn, progressBar, timeDisplay, track.audio);
+            });
+            
+            // Add event listeners to buy buttons
+            document.querySelectorAll('.buy-btn:not(.sold-out)').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const trackId = this.getAttribute('data-id');
+                    buyTrack(trackId);
+                });
+            });
+        }
+        
+        // Simulate track purchase
+        function buyTrack(trackId) {
+            // In a real app, this would connect to a payment processor
+            // For this demo, we'll just mark it as sold
+            const trackIndex = tracks.findIndex(t => t.id == trackId);
+            if (trackIndex !== -1) {
+                tracks[trackIndex].sold = true;
+                renderTracks();
+                
+                // Show success message
+                alert(`¡Has comprado "${tracks[trackIndex].title}"! Serás redirigido a WhatsApp para completar el pago.`);
+                
+                // Redirect to WhatsApp for payment
+                window.open(`https://wa.me/573238051516?text=Quiero%20comprar%20la%20pista%20${encodeURIComponent(tracks[trackIndex].title)}%20por%20${encodeURIComponent(tracks[trackIndex].price)}`, '_blank');
+            }
+        }
+        
+        // Animate stats counting
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const duration = 2000; // 2 seconds
+                const step = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const increment = () => {
+                    current += step;
+                    if (current < target) {
+                        stat.textContent = Math.floor(current);
+                        requestAnimationFrame(increment);
+                    } else {
+                        stat.textContent = target;
+                    }
+                };
+                
+                increment();
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTracks();
+            
+            // Form submission
+            const workForm = document.getElementById('workForm');
+            if (workForm) {
+                workForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('Gracias por tu interés. Hemos recibido tu solicitud y nos pondremos en contacto contigo pronto.');
+                    this.reset();
+                });
+            }
+            
+            // Newsletter form
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    alert('¡Gracias por suscribirte a nuestro newsletter! Pronto recibirás nuestras actualizaciones.');
+                    this.reset();
+                });
+            }
+            
+            // Animation on scroll
+            const animateElements = document.querySelectorAll('.animate-fade, .animate-left, .animate-right');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateX(0)';
+                        
+                        // If this is the stats section, animate the numbers
+                        if (entry.target.classList.contains('stats')) {
+                            animateStats();
+                        }
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                if (el.classList.contains('animate-left')) {
+                    el.style.transform = 'translateX(-50px)';
+                } else if (el.classList.contains('animate-right')) {
+                    el.style.transform = 'translateX(50px)';
+                }
+                observer.observe(el);
+            });
+            
+            // Observe stats section
+            const statsSection = document.querySelector('.stats');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+        });
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>
